@@ -1,17 +1,17 @@
 package module9.MyArrayList;
 import java.util.Arrays;
 
-public class MyArrayList {
+public class MyArrayList<T> {
     private static final int INITIAL_CAPACITY = 10;
-    private Object[] array;
+    private T[] array;
     private int size;
 
     public MyArrayList() {
-        array = new Object[INITIAL_CAPACITY];
+        array = (T[]) new Object[INITIAL_CAPACITY];
         size = 0;
     }
 
-    public void add(Object value) {
+    public void add(T value) {
         ensureCapacity();
         array[size] = value;
         size++;
@@ -39,12 +39,14 @@ public class MyArrayList {
         return size;
     }
 
-    public Object get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Неправильний індекс");
         }
         return array[index];
     }
+
+
 
     private void ensureCapacity() {
         if (size == array.length) {
