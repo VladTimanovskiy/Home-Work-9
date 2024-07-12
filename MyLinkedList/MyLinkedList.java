@@ -1,9 +1,9 @@
 package module9.MyLinkedList;
 
-public class MyLinkedList {
+public class MyLinkedList<T> {
 
-    private Node head;
-    private Node tail;
+    private Node<T> head;
+    private Node<T> tail;
     private int size;
 
     public MyLinkedList() {
@@ -12,8 +12,8 @@ public class MyLinkedList {
         size = 0;
     }
 
-    public void add(Object value) {
-        Node newNode = new Node(value);
+    public void add(T value) {
+        Node<T> newNode = new Node(value);
 
         if (isEmpty()) {
             head = newNode;
@@ -31,7 +31,7 @@ public class MyLinkedList {
             throw new IndexOutOfBoundsException("Неправильний індекс");
         }
 
-        Node currentNode = getNodeAtIndex(index);
+        Node<T> currentNode = getNodeAtIndex(index);
 
 
         if (currentNode.prev != null) {
@@ -60,12 +60,12 @@ public class MyLinkedList {
         return size;
     }
 
-    public Object get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Неправильний індекс.");
         }
 
-        Node currentNode = getNodeAtIndex(index);
+        Node<T> currentNode = getNodeAtIndex(index);
 
         return currentNode.data;
     }
@@ -74,9 +74,9 @@ public class MyLinkedList {
         return size == 0;
     }
 
-    private Node getNodeAtIndex(int index) {
+    private Node<T> getNodeAtIndex(int index) {
 
-        Node currentNode;
+        Node<T> currentNode;
         if (index < size / 2) {
             currentNode = head;
             for (int i = 0; i < index; i++) {
